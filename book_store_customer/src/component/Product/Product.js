@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Pagination from 'react-bootstrap/pagination';
+import Pagination from 'react-bootstrap/Pagination';
 import ProductItem from "./ProductItem"
 import Header from "../UI/Header/Header";
 
