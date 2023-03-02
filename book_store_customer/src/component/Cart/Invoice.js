@@ -39,7 +39,7 @@ const Invoice = () => {
     }, []);
     useEffect(() => {
         fetchlistInvoice();
-    }, []);
+    }, [fetchlistInvoice]);
 
     const fetchListDetail = async (id) => {
         setShowDetail(true);
@@ -68,7 +68,7 @@ const Invoice = () => {
 
     const handleCancelOrder = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn hủy đơn hàng này không?")) {
-            if (status == 3) {
+            if (status === 3) {
                 alert("Đơn hàng này đang giao không thể hủy");
                 return;
             } else {
@@ -107,7 +107,7 @@ const Invoice = () => {
 
 
     const HandleAccept = (props)=>{
-        if(status != 3)
+        if(status !== 3)
         {
             return <></>
         }

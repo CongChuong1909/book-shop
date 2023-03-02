@@ -1,6 +1,5 @@
 import React from 'react';
 import '../src/assets/css/App.css';
-import classes from "./assets/css/main.css"
 // import Product from './component/Product/Product';
 // import Login from './component/Login/Login';
 // import Header from './component/UI/Header/Header';
