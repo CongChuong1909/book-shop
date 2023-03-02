@@ -26,7 +26,7 @@ function Product(props) {
     const fetchlistBookHandler = useCallback(async () => {
         try {
             const response = await fetch(
-                `http://localhost:5000/book?page=${pagination}&type=${filterCategory}&search=${searchInput}`,
+                `${API}/book?page=${pagination}&type=${filterCategory}&search=${searchInput}`,
             );
             if (!response.ok) {
                 throw new Error("Something is wrong!");
@@ -59,7 +59,7 @@ function Product(props) {
     const fetchlistCategoryBookHandler = useCallback(async () => {
         try {
             const response = await fetch(
-                "http://localhost:5000/type",
+                `${API}/type`,
             );
             if (!response.ok) {
                 throw new Error("Something is wrong!");

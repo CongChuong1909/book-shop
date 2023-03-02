@@ -16,7 +16,7 @@ function Login(props) {
                 body: JSON.stringify(data)
             };
 
-            await fetch('http://localhost:5000/user/login_customer', requestOptions)
+            await fetch(`${API}/user/login_customer`, requestOptions)
                 .then(response => {
                     
                     console.log(response);

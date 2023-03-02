@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Form, Table, Button, Container, Row, Col } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
 import Header from "../UI/Header/Header";
+import API from "../../constant.js"
 
 const Invoice = () => {
     const cartCtx = useContext(CartContext);
@@ -12,7 +13,7 @@ const Invoice = () => {
     const fetchlistInvoice = useCallback(async () => {
         try {
             const idUser = JSON.parse(localStorage.getItem('loginUser')).id;
-            const response = await fetch(`http://localhost:5000/order/get_order_of_user?iduser=${idUser}`);
+            const response = await fetch(`${API}order/get_order_of_user?iduser=${idUser}`);
             if (!response.ok) {
                 throw new Error("Something is wrong!");
             }
@@ -44,7 +45,7 @@ const Invoice = () => {
     const fetchListDetail = async (id) => {
         setShowDetail(true);
         try {
-            const response = await fetch(`http://localhost:5000/order/${id}`);
+            const response = await fetch(`${API}/order/${id}`);
             if (!response.ok) {
                 throw new Error("Something is wrong!");
             }
@@ -77,7 +78,7 @@ const Invoice = () => {
                     headers: { "Content-Type": "application/json" },
                 };
                 await fetch(
-                    `http://localhost:5000/order/user_update_status/${id}?status=0`,
+                    `${API}/order/user_update_status/${id}?status=0`,
                     requestOptions,
                 )
                     .then((res) => res.json())
@@ -99,7 +100,7 @@ const Invoice = () => {
             headers: { 'Content-Type': 'application/json' }
         };
         console.log(requestOptions);
-        await fetch(`http://localhost:5000/order/user_update_status/${id}?status=4`, requestOptions)
+        await fetch(`${API}/order/user_update_status/${id}?status=4`, requestOptions)
             .then(res=> res.json())
             .then(response => {alert(response.msg); setStatus(4)})
             .catch(error => console.log(error))

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 import Header from '../UI/Header/Header';
+import API from "../../constant.js"
 
 const AuthorList = () => {
 const [listAuthor, setListAuthor] = useState([]);
@@ -10,7 +11,7 @@ const [listAuthor, setListAuthor] = useState([]);
 const fetchlistAuthorHandler = useCallback(async () => {
     try {
         const response = await fetch(
-            "http://localhost:5000/author",
+            `${API}/author`,
         );
         if (!response.ok) {
             throw new Error("Something is wrong!");

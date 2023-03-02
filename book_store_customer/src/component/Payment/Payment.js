@@ -66,7 +66,7 @@ function Payment(props) {
         };  
 
         console.log(requestOptions);    
-        await fetch('http://localhost:5000/order/create', requestOptions)
+        await fetch(`${API}/order/create`, requestOptions)
             .then(res => res.json)
             .then(response => alert("Đặt hàng thành công"))
             .catch(error => console.log(error))

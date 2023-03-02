@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CartContext from "../../Store/CartContext";
 import Header from "../UI/Header/Header";
 import CartItem from "./CartItem";
+import API from "../../constant.js"
 
 function Cart(props) {
     const[listVoucher, setListVoucher] = useState([]);
@@ -30,7 +31,7 @@ function Cart(props) {
     const fetchListVoucher = useCallback(async () => {
         try {
             const response = await fetch(
-                "http://localhost:5000/voucher",
+                `${API}/voucher`,
             );
             if (!response.ok) {
                 throw new Error("Something is wrong!");
