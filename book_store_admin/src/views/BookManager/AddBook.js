@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { API } from 'views/constant';
 
 function AddBook(props) {
     const [nameBook, setNameBook] = useState("");
@@ -17,7 +18,7 @@ function AddBook(props) {
 
    
     const fetchlistHandler = async() => {
-        const response = await fetch("http://localhost:5000/type");
+        const response = await fetch(`${API}/type`);
         if (!response.ok) {
             throw new Error("Something is wrong!");
         }
@@ -31,7 +32,7 @@ function AddBook(props) {
         }
         setListCate(dataCate);
 
-        const responseAuthor = await fetch("http://localhost:5000/author");
+        const responseAuthor = await fetch(`${API}/author`);
         if (!responseAuthor.ok) {
             throw new Error("Something is wrong!");
         }
@@ -46,7 +47,7 @@ function AddBook(props) {
         setListAuthor(dataAuthor);
 
         const responsePublisher = await fetch(
-            "http://localhost:5000/publisher",
+            `${API}/publisher`,
         );
         if (!responsePublisher.ok) {
             throw new Error("Something is wrong!");
@@ -72,7 +73,7 @@ function AddBook(props) {
         let formData = new FormData();
         formData.append("file", file);
 
-        const res = await fetch("http://localhost:5000/api/upload_avatar", {
+        const res = await fetch(`${API}/api/upload_avatar`, {
             method: "POST",
             body: formData,
         })
