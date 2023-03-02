@@ -8,6 +8,7 @@ function CartButton(props) {
     const [isChangeCart, setIsChangeCart] = useState(false);
     const { items } = cartCtx;
 
+
     useEffect(() => {
         if (items.length === 0) {
             return;
@@ -28,7 +29,7 @@ function CartButton(props) {
     }, 0);
     return (
         <div className="header_cart">
-            <Link to="/cart">
+            <Link to="/cart" className={isChangeCart}>
                 <i className="fa-solid fa-cart-arrow-down"></i>
             </Link>
             <p>{numberOfCartItems}</p>

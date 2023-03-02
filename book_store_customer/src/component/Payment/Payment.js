@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {useContext,useState } from "react";
 import Header from "../UI/Header/Header";
 import CartContext from "../../Store/CartContext";
 
@@ -9,7 +9,6 @@ function Payment(props) {
     const [address, setAddress] = useState('');
     const [note, setNote] = useState('');
     console.log(cartCtx);
-    const [reduce, setReduce] =useState(0);
     let totalMoney = 0;
     if(cartCtx.voucher)
     {

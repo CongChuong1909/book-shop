@@ -1130,7 +1130,7 @@ html {
 .add_voucher-complete-header {
     display: flex;
     padding: 20px;
-    justify-content: end;
+    justify-content: center;
     border-bottom: 1px solid #ddd;
 }
 .add_voucher-complete-title {
@@ -1289,7 +1289,7 @@ html {
 .forgot_password {
     display: flex;
     width: 50%;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .forgot_password p {
     text-decoration: underline;

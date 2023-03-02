@@ -53,7 +53,7 @@ function Product(props) {
     useEffect(() => {
         fetchlistBookHandler();
         
-    }, [pagination, filterCategory,searchInput]); 
+    }, [pagination, filterCategory,searchInput, fetchlistBookHandler]); 
 
     const [listCategory, setCategoryBook] = useState([]);
     const fetchlistCategoryBookHandler = useCallback(async () => {

@@ -56,7 +56,7 @@ function Cart(props) {
     useEffect(() => {
         fetchListVoucher();
         
-    }, []);
+    }, [fetchListVoucher]);
     
     const handleApplyVoucher = (id,reduce) =>{
         setA("Đã được áp dụng");
@@ -77,7 +77,7 @@ function Cart(props) {
     
       const handlePayment = (e) =>{
         
-            if(cartCtx.items.length == 0)
+            if(cartCtx.items.length === 0)
             {
                 e.preventDefault();
                 alert('Giỏ hàng rỗng');
@@ -148,7 +148,7 @@ function Cart(props) {
                                 <div key={item.id} className="cart_voucher">
                                     <div className="cart_voucher-title">
                                         <h3>MÃ GIẢM {convertToVnd(item.reduce)}</h3>
-                                        <a href="">Chi tiết</a>
+                                        <a href="#">Chi tiết</a>
                                     </div>
                                     <div className="cart_voucher-sub">
                                         <p>

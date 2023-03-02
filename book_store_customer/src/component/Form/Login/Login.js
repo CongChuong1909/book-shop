@@ -1,5 +1,5 @@
-import { Button } from "bootstrap";
-import React, { useEffect, useState } from "react";
+
+import React, {useState } from "react";
 
 function Login(props) {
 
@@ -20,7 +20,7 @@ function Login(props) {
                 .then(response => {
                     
                     console.log(response);
-                    if(response.ok == false)
+                    if(response.ok === false)
                     {
                         alert("Thong tin dang nhap khong chinh xac")
                     }
@@ -50,14 +50,14 @@ function Login(props) {
                     <input type="text" placeholder="Tên đăng nhập" value= {username} onChange ={(e)=> setUsername(e.target.value)} />
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png"
-                        alt=""
+                        alt="a"
                     />
                 </div>
                 <div className="user_password">
                     <input type="password" name="" id="" placeholder="Mật khẩu" value= {password} onChange ={(e)=> setPassword(e.target.value)} />
                     <img
                         src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_password-512.png"
-                        alt=""
+                        alt="a"
                     />
                 </div>
                 <div className="forgot_password">
@@ -68,15 +68,15 @@ function Login(props) {
                 <div className="login_social">
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png"
-                        alt=""
+                        alt="a"
                     />
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1200px-Twitter-logo.svg.png"
-                        alt=""
+                        alt="a"
                     />
                     <img
                         src="https://banner2.cleanpng.com/20180406/jpq/kisspng-linkedin-logo-computer-icons-comcast-business-get-started-now-button-5ac6f544698595.9898331815229883564322.jpg"
-                        alt=""
+                        alt="a"
                     />
                 </div>
             </div>

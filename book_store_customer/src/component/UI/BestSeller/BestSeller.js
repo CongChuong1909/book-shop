@@ -1,16 +1,8 @@
 import React from 'react';
-import Slider from "react-slick";
 
 function BestSeller(props) {
 
-    const setting = {
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        // prevArrow:"<button type='button' className='slick-prev pull-left'><i className='fa fa-angle-left' aria-hidden='true'></i></button>",
-        //           nextArrow:"<button type='button' className='slick-next pull-right'><i className='fa fa-angle-right' aria-hidden='true'></i></button>"
-    }
+
 
     return (
         <div className="product">

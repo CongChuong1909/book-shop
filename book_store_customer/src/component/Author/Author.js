@@ -34,7 +34,7 @@ const fetchlistAuthorHandler = useCallback(async () => {
 }, []);
 useEffect(() => {
     fetchlistAuthorHandler();
-}, []); 
+}, [fetchlistAuthorHandler]); 
 
 return (
     <div>

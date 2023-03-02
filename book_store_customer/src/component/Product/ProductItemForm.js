@@ -21,7 +21,7 @@ function ProductItemForm(props) {
     }
 
     const ViewButton = () =>{
-        if(props.amount==0)
+        if(props.amount===0)
         {
             return <Button variant="disable" type="submit">Add to cart</Button>
         }
