@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 import Header from '../UI/Header/Header';
-import API from "../../constant.js"
+import {API} from "../../constant.js"
 
 const AuthorList = () => {
 const [listAuthor, setListAuthor] = useState([]);

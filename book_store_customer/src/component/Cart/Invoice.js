@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Form, Table, Button, Container, Row, Col } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
 import Header from "../UI/Header/Header";
-import API from "../../constant.js"
+import {API} from "../../constant.js"
 
 const Invoice = () => {
     const cartCtx = useContext(CartContext);

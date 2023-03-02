@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Pagination from 'react-bootstrap/Pagination';
 import ProductItem from "./ProductItem"
 import Header from "../UI/Header/Header";
+import {API} from "../../constant.js"
 
 function Product(props) {
 

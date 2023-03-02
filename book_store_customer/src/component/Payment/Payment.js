@@ -1,6 +1,7 @@
 import React, {useContext,useState } from "react";
 import Header from "../UI/Header/Header";
 import CartContext from "../../Store/CartContext";
+import {API} from "../../constant.js"
 
 function Payment(props) {
     const cartCtx = useContext(CartContext);

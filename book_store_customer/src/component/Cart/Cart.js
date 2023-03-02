@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CartContext from "../../Store/CartContext";
 import Header from "../UI/Header/Header";
 import CartItem from "./CartItem";
-import API from "../../constant.js"
+import {API} from "../../constant.js"
 
 function Cart(props) {
     const[listVoucher, setListVoucher] = useState([]);
