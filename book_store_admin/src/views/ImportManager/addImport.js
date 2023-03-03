@@ -18,6 +18,7 @@ function AddImport(props) {
             throw new Error("Something is wrong!");
         }
         const data = await response.json();
+        console.log(data);
         const loadListBook = [];
         for (const key in data) {
             loadListBook.push({
