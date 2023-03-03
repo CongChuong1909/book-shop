@@ -148,7 +148,7 @@ function Cart(props) {
                                 return(
                                 <div key={item.id} className="cart_voucher">
                                     <div className="cart_voucher-title">
-                                        <h3>MÃ GIẢM {convertToVnd(item.reduce)}</h3>
+                                        <h3>MÃ GIẢMmmmm {convertToVnd(item.reduce)}</h3>
                                         <a href="/#">Chi tiết</a>
                                     </div>
                                     <div className="cart_voucher-sub">
