@@ -32,7 +32,7 @@ class Footer extends Component {
               </li>
               <li>
                 <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Company
+                  Companyyyy
                 </a>
               </li>
               <li>
