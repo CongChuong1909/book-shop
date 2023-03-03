@@ -1,15 +1,20 @@
 import React from 'react';
 import classes from "./Header.module.css"
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import { useState } from 'react';
 import Form from '../../Form/Form';
 import CartButton from '../../Cart/CartButton';
 import { Button } from 'react-bootstrap';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Header(props) {
     const [isVisibleLoginForm, setisVisibleLoginForm] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     let nameLogin;
+
+    let activeClassName = classes["active"];
+    
 
     function handleDisplayLogin () {
         setisVisibleLoginForm(true);
@@ -32,12 +37,12 @@ function Header(props) {
     }
 
     return (
-            <div>
+            <div >
             <div className={classes["header"]}>
             <div className={classes["header_info"]}>
                 <div className={classes["header_gmail"]}>
-                    <p>Congchuong321@gmail.com</p>
-                    <p>0987654321</p>
+                    <p className={classes["padding"]}>Congchuong321@gmail.com </p>
+                    <p> 0987654321</p>
                 </div>
                 <div className={classes["header_social"]}>
                     <i className="fa-brands fa-facebook"></i>
@@ -59,22 +64,36 @@ function Header(props) {
                 </div>
                 {nameLogin ? <div style={{display:"flex", marginLeft:"8px"}}><h4 style={{width:"120px"}}>{nameLogin}</h4><Button onClick={handleLogout} variant="outlined">Logout</Button></div>: <div onClick={handleDisplayLogin} className={classes["login"]}>
                                 <i className="fa-solid fa-right-to-bracket"></i>
-                                <p>Đăng nhập</p>
+                                <p >Đăng nhập</p>
                             </div>}
                 
             </div>
         </div>
-        <div className={classes["header_nav"]}>
+        <div  className={classes["header_nav"]}>
             <div className={classes["header_nav-wrap"]}>
                 <ul className={classes["header_nav-list"]}>
-                    <li> <Link to="/">Trang chủ</Link></li>
-                    <li> <Link to="/product">Sản phẩm</Link></li>
-                    <li> <Link to="/author">Tác giả</Link></li>
-                    <li> <Link to="/sale">Quà tặng</Link> </li>
-                    <li> <Link to="/aboutus">Về chúng tôi</Link></li>
-                    <li> <Link to="/contact">Liên hệ</Link></li>
-                    <li> <Link to="/myinvoice">Đơn hàng của tôi</Link></li>
-                    <li> <Link to="">Khác</Link></li>
+                    <li> <NavLink  to="/" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } end> Trang chủ</NavLink></li>
+                    <li> <NavLink  to="/product" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Sản phẩm</NavLink></li>
+                    <li> <NavLink  to="/author" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Tác giả</NavLink></li>
+                    <li> <NavLink  to="/sale" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Quà tặng</NavLink> </li>
+                    <li> <NavLink  to="/aboutus" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Về chúng tôi</NavLink></li>
+                    <li> <NavLink  to="/contact" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Liên hệ</NavLink></li>
+                    <li> <NavLink  to="/myinvoice" className={({ isActive }) =>
+                                        isActive ? activeClassName : undefined
+                                    } > Đơn hàng của tôi</NavLink></li>
+                   
                 </ul>
                 <CartButton/>
             </div>

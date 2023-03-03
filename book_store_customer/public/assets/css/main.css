@@ -18,7 +18,6 @@ html {
     box-sizing: border-box;
 }
 .container {
-    padding:0 5%;
     margin: 0 auto;
 }
 .header {
@@ -206,11 +205,32 @@ html {
     list-style: none;
     position: relative;
 }
+.margin{
+    margin: 0 20px;
+}
 .product-items {
     width: 22%;
     margin: 10px 14px;
     position: relative;
     box-shadow:0 8px 8px 0 rgba(103, 151, 255, .11), 0 12px 18px 0 rgba(103, 151, 255, .11);
+}
+.slick-slide {
+    padding: 0 15px !important;
+  }
+  .slick-arrow{
+    width: 20px !important;
+    height: 20px p !important;
+
+  }
+  
+  .slick-list {
+    margin: 0 2em !important;
+  }
+
+  .slick-prev:before,
+.slick-next:before {
+  color: #f3b366 !important;
+  font-size: 40px !important;
 }
 .product-items-wrap {
     background-color: #fff;
@@ -237,6 +257,7 @@ html {
 .product-items:hover .add_cart {
     display: block;
 }
+
 .overlay {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.1);
@@ -462,6 +483,16 @@ html {
     align-items: center;
     background-color: #f5f5f5;
     border: 1px
+}
+
+.content_author{
+    padding: 20px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.content_author_list{
+    width: 25%;
 }
 
 .underline{
@@ -815,6 +846,42 @@ html {
     font-weight: 400px;
     font-size: 12px;
     color: #aaa;
+}
+
+.button_add_cart{
+    display: inline-block;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 8px 20px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button_add_cart:hover{
+    background-color: #216523; 
+}
+
+input[type=number] { 
+    padding: 6px 0;
+    text-align: center;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+
+
+.disable{
+    background-color: rgba(0, 0, 0, 0.26);
+    /* pointer-events: none; */
+    cursor: default;
+}
+.button_add_cart.disable:hover{
+    background-color: rgba(0, 0, 0, 0.26); 
 }
 .into_money {
     display: flex;
@@ -1384,3 +1451,144 @@ html {
 p{
     margin: 0 !important;
 }
+
+
+
+.contain {
+    background-color: #eee;
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+  }
+  
+  div.form {
+    background-color: #eee;
+  }
+  .contact-wrapper {
+    margin: auto 0;
+  }
+  
+  .submit-btn {
+    float: left;
+  }
+  .reset-btn {
+    float: right;
+  }
+  
+  .form-headline:after {
+    content: "";
+    display: block;
+    width: 10%;
+    padding-top: 10px;
+    border-bottom: 3px solid #ec1c24;
+  }
+  
+  .highlight-text {
+    color: #ec1c24;
+  }
+  
+  .hightlight-contact-info {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+  
+  .highlight-text-grey {
+    font-weight: 500;
+  }
+  
+  .email-info {
+      margin-top: 20px;
+  }
+  
+  ::-webkit-input-placeholder { /* Chrome */
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .required-input {
+    color: black;
+  }
+  @media (min-width: 600px) {
+    .contain {
+      padding: 0;
+    }
+  }
+  
+
+  
+  .form-input:focus,
+  textarea:focus{
+    outline: 1.5px solid #ec1c24;
+  }
+  
+  .form-input,
+  textarea {
+    width: 100%;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+  }
+  
+  @media (min-width: 700px) {
+    .wrapper {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+    .wrapper > * {
+      padding: 2em 2em;
+    }
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contacts {
+    color: #212d31;
+  }
+  
+  .form {
+    background: #fff;
+  }
+  
+  .form_contactus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  .form_contactus label {
+    display: block;
+  }
+  .form_contactus p {
+    margin: 0;
+  }
+  
+  .full-width {
+    grid-column: 1 / 3;
+  }
+  
+  .btn-ct,
+  .submit-btn,
+  .form-input,
+  textarea {
+    padding: 1em;
+  }
+  
+  .btn-ct, .submit-btn {
+    background: transparent;
+    border: 1px solid #ec1c24;
+    color: #ec1c24;
+    border-radius: 15px;
+    padding: 5px 20px;
+    text-transform: uppercase;
+  }
+  .btn-ct:hover, .submit-btn:hover,
+  .btn-ct:focus , .submit-btn:focus{
+    background: #ec1c24;
+    outline: 0;
+    color: #eee;
+  }
+  .error {
+    color: #ec1c24;
+  }

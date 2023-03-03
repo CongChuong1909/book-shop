@@ -40,12 +40,12 @@ useEffect(() => {
 return (
     <div>
         <Header/>
-        <ListGroup>
+        <ListGroup className='content_author'>
       {listAuthor.map(author => (
-        <ListGroupItem key={author.name}>
-          <div  > 
+        <ListGroupItem className='content_author_list'  key={author.name}>
+          <div> 
             <h3>{author.name}</h3>
-            <Image src={author.image} thumbnail />
+            <Image width={186} height={270} src={author.image} thumbnail />
             <p>{author.des}</p>
             
           </div>

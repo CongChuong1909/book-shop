@@ -273,7 +273,7 @@ function Payment(props) {
                                     Quay về giỏ hàng
                                 </p>
                             </a>
-                            <button type="submit"> <a href="http://localhost:3001/">Xác nhận thanh toán</a></button>
+                            <button type="submit"> <a href="https://book-shop-api-b7tb.onrender.com/">Xác nhận thanh toán</a></button>
                         </div>
                     </div>
                 </form>

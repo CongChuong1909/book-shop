@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Button } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 
 function ProductItemForm(props) {
@@ -23,10 +23,10 @@ function ProductItemForm(props) {
     const ViewButton = () =>{
         if(props.amount===0)
         {
-            return <Button variant="disable" type="submit">Add to cart</Button>
+            return <Button className="button_add_cart disable" type="submit">Add to cart</Button>
         }
         else if(props.amount> 0){
-            return <Button type="submit">Add to cart</Button>
+            return <Button className="button_add_cart" type="submit">Add to cart</Button>
         }
     } 
 
@@ -35,6 +35,7 @@ function ProductItemForm(props) {
                 <form action="" onSubmit={submitHandler}>
                    <ViewButton/>
                     <input
+                    className="quantity"
                         ref={amountInputRef}
                         label="Amount"
                         id="amount"
