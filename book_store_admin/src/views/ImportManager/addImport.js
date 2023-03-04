@@ -109,7 +109,7 @@ function AddImport(props) {
                                         >
                                             <div className="col-xl-12 col-lg-12 col-md-12">
                                                 <div className="form-group mb-3">
-                                                    <label>Book name</label>
+                                                    <label>Book names</label>
 
                                                     <input
                                                         list="data"
