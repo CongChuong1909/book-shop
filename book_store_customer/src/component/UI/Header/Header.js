@@ -62,7 +62,7 @@ function Header(props) {
                     <input onChange={(e)=>setSearchInput(e.target.value)} type="text" name="" className={classes["txt_search"]} id="" placeholder="Nhập từ khóa tìm kiếm"/>
                     <button onClick={handleSearch}>Tìm kiếm</button>
                 </div>
-                {nameLogin ? <div style={{display:"flex", marginLeft:"8px"}}><h4 style={{width:"120px"}}>{nameLogin}</h4><Button onClick={handleLogout} variant="outlined">Logout</Button></div>: <div onClick={handleDisplayLogin} className={classes["login"]}>
+                {nameLogin ? <div style={{display:"flex", marginLeft:"8px", alignItems:"center"}}><h4 style={{width:"160px"}}>{nameLogin}</h4><Button onClick={handleLogout} className = "logout" variant="outlined">Logout &gt;</Button></div>: <div onClick={handleDisplayLogin} className={classes["login"]}>
                                 <i className="fa-solid fa-right-to-bracket"></i>
                                 <p >Đăng nhập</p>
                             </div>}

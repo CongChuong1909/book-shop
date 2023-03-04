@@ -7,7 +7,6 @@ import {API} from "../../constant.js"
 
 function Cart(props) {
     const[listVoucher, setListVoucher] = useState([]);
-    const[a, setA] = useState("Áp dụng")
     const cartCtx = useContext(CartContext);
     let countApply = 0;
     const [reduce, setReduce] =useState(0);
@@ -39,7 +38,7 @@ function Cart(props) {
             const data = await response.json();
             const loadListVoucher = [];
             console.log(data);
-            for (let i =1; i< data.length; i++ ) {
+            for (let i =0; i< 3; i++ ) {
                 loadListVoucher.push({
                     id: data[i]._id,
                     name: data[i].name,
@@ -60,7 +59,6 @@ function Cart(props) {
     }, [fetchListVoucher]);
     
     const handleApplyVoucher = (id,reduce) =>{
-        setA("Đã được áp dụng");
         cartCtx.voucher = {id, reduce};
         setReduce(reduce);
     }
@@ -159,10 +157,10 @@ function Cart(props) {
                                     <div className="cart-voucher-content">
                                         <div className="cart-voucher-content-bar">
                                             <div className="cart-voucher-content-bar-chart"></div>
-                                            <p>Mua thêm {destination}đ để nhận mã</p>
+                                            <p>Mua thêm {convertToVnd(destination)} để nhận mã</p>
                                         </div>
-                                        {!apply && <div className="btn-buy-more">Mua Thêm</div>}
-                                        {apply && <div className="btn-apply" onClick={() =>handleApplyVoucher(item.id,item.reduce)} >{a}</div>}
+                                        {!apply && <div className="btn-buy-more"><Link className="btn-buy-more_link" to = "/product">Mua thêm</Link></div>}
+                                        {apply && <div className="btn-apply" onClick={() =>handleApplyVoucher(item.id,item.reduce)} >Áp dụng</div>}
                                     </div>
                                 </div>
                             )})

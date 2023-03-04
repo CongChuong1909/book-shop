@@ -3,6 +3,7 @@ import { Form, Table, Button, Container, Row, Col } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
 import Header from "../UI/Header/Header";
 import {API} from "../../constant.js"
+// import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Invoice = () => {
     const cartCtx = useContext(CartContext);
@@ -13,7 +14,8 @@ const Invoice = () => {
     const fetchlistInvoice = useCallback(async () => {
         try {
             const idUser = JSON.parse(localStorage.getItem('loginUser')).id;
-            const response = await fetch(`${API}order/get_order_of_user?iduser=${idUser}`);
+            const response = await fetch(`${API}/order/get_order_of_user?iduser=${idUser}`);
+   
             if (!response.ok) {
                 throw new Error("Something is wrong!");
             }
@@ -40,7 +42,7 @@ const Invoice = () => {
     }, []);
     useEffect(() => {
         fetchlistInvoice();
-    }, [fetchlistInvoice]);
+    }, [ fetchlistInvoice]);
 
     const fetchListDetail = async (id) => {
         setShowDetail(true);
@@ -64,8 +66,7 @@ const Invoice = () => {
             setListDetail(loadListInvoiceDetail);
         } catch (error) {}
     };
-
-    console.log(status);
+    console.log("aaa");
 
     const handleCancelOrder = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn hủy đơn hàng này không?")) {
@@ -113,20 +114,21 @@ const Invoice = () => {
             return <></>
         }
         else{
-            return <Button onClick={()=>handleConfirm(props.id)} variant="primary">Xác nhận đã nhận hàng</Button>
+            return <Button className="button_confirm" onClick={()=>handleConfirm(props.id)} variant="primary">Xác nhận đã nhận hàng</Button>
         }
     }
     return (
-        <Container>
+        <Container >
             <Header />
-            <Row>
-                <Col md={{ span: 8, offset: 2 }}>
+            <Row className="container_invoice">
+                <Col className="container_wrap" md={{ span: 8, offset: 2 }}>
                     <h1 className="text-center mb-4">Invoice</h1>
                     {listInvoice.map((item) => (
-                        <>
-                            <Form>
-                                <Form.Group
-                                    as={Row}
+                        <div className="container_wrap"  key={item.id}>
+                            <Form  className="form_invoice">
+                               <div className="container_wrap" >
+                               <Form.Group
+                                    className="item_invoice"
                                     controlId="formInvoiceDate"
                                 >
                                     <Form.Label column sm={3}>
@@ -140,7 +142,7 @@ const Invoice = () => {
                                     </Col>
                                 </Form.Group>
                                 <Form.Group
-                                    as={Row}
+                                    className="item_invoice"
                                     controlId="formCustomerName"
                                 >
                                     <Form.Label column sm={3}>
@@ -154,8 +156,10 @@ const Invoice = () => {
                                         />
                                     </Col>
                                 </Form.Group>
-                                <Form.Group
-                                    as={Row}
+                               </div>
+                                <div>
+                                    <Form.Group
+                                    className="item_invoice"
                                     controlId="formCustomerPhone"
                                 >
                                     <Form.Label column sm={3}>
@@ -170,7 +174,7 @@ const Invoice = () => {
                                     </Col>
                                 </Form.Group>
                                 <Form.Group
-                                    as={Row}
+                                    className="item_invoice"
                                     controlId="formCustomerAddress"
                                 >
                                     <Form.Label column sm={3}>
@@ -184,19 +188,22 @@ const Invoice = () => {
                                         />
                                     </Col>
                                 </Form.Group>
+                                </div>
                             </Form>
 
-                            <Button
-                                onClick={fetchListDetail.bind(null, item.id)}
-                            >
-                                Xem chi tiết
-                            </Button>
-                            <Button
-                                variant="danger"
-                                onClick={handleCancelOrder.bind(null, item.id)}
-                            >
-                                Hủy đơn hàng
-                            </Button>
+                            <div>
+                                <Button
+                                    onClick={fetchListDetail.bind(null, item.id)}
+                                >
+                                    Xem chi tiết
+                                </Button>
+                                <Button
+                                    className="danger"
+                                    onClick={handleCancelOrder.bind(null, item.id)}
+                                >
+                                    Hủy đơn hàng
+                                </Button>
+                            </div>
                             {showDetail && (
                                 <Table striped bordered hover>
                                     <thead>
@@ -233,14 +240,15 @@ const Invoice = () => {
                                     </tfoot>
                                 </Table>
                             )}
-                            <div className="text-center mt-4">
+                            <div className="text-center container_wrap-confirm mt-4">
                             <HandleAccept id = {item.id}/>
                             </div>
-                        </>
+                        </div>
                     ))}
                 </Col>
             </Row>
         </Container>
+
     );
 };
 

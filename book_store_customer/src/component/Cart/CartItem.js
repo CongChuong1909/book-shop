@@ -4,15 +4,6 @@ import React from "react";
 function CartItem(props) {
     
     const totalPrice = props.amount* props.price;
-    let totalPriceConvert;
-    const totalPriceString =  totalPrice +'';
-    if(totalPriceString.length > 3)
-    {
-        totalPriceConvert = totalPriceString.slice(0, 1)+ "." + totalPriceString.slice(1);
-    }
-    else{
-        totalPriceConvert = totalPriceString;
-    }
     function convertToVnd(amount) {
         const parts = String(amount).split('.');
         let intPart = parts[0];
@@ -47,7 +38,7 @@ function CartItem(props) {
                 <p>{props.amount}</p>
                 <div className="raise">+</div>
             </div>
-            <div className="cost">{convertToVnd(totalPriceConvert)}</div>
+            <div className="cost">{convertToVnd(totalPrice)}</div>
             <div className="delete" onClick={props.onDelete()}>
                 <i className="fa-solid fa-trash-can"></i>
             </div>

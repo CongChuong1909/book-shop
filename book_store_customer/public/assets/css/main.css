@@ -773,7 +773,7 @@ html {
 
 .container-cart {
     width: 100%;
-    /* padding-left: 180px; */
+    padding:0 180px;
     display: flex;
     flex-direction: column;
     background-color: #f8f8f8;
@@ -899,15 +899,16 @@ input[type=number] {
     border-bottom: 1px solid #d5dde7;
 }
 .total-price p:first-child {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
 }
 .total-price p:last-child {
-    font-size: 24px;
+    font-size: 22px;
     color: #e71e17;
     font-weight: 600;
 }
 .total-price {
+    padding-top: 16px;
     display: flex;
     justify-content: space-between;
 }
@@ -938,6 +939,10 @@ input[type=number] {
     font-size: 14px;
     cursor: pointer;
     padding: 2px 8px;
+}
+.btn-buy-more_link{
+    color: #fff;
+    text-decoration: none;
 }
 .btn-apply {
     color: #fff;
@@ -1613,3 +1618,80 @@ p{
   li.pagination a{
     text-decoration: none;
   }
+
+  .logout{
+    padding: 10px 10px;
+    width: 78px;
+    outline: none;
+    border-radius: 8px;
+    color: #fff;
+    border: 1px solid #ccc;
+    background-color: #c0322d;
+  }
+
+  
+
+
+.container_invoice{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form_invoice{
+    display: flex;
+}
+.item_invoice{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.container_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_wrap-confirm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container_invoice * input{
+    padding: 4px 20px;
+    margin: 8px 20px;
+}
+
+.container_invoice * button{
+    display: inline-block;
+  border-radius: 4px;
+  background-color: #0870af;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 8px 20px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.danger{
+    background-color: #d53343 !important;
+}
+.btnConfirm{
+    width: 100%;
+}
+
+.button_confirm{
+    width: 86% !important;
+    background-color: #4CAF50 !important;
+}
+
+input[type=date]
+{
+    width: 205px;
+}

@@ -8,16 +8,24 @@ function ProductItemForm(props) {
     const amountInputRef = useRef();
     const submitHandler = (e) =>{
         e.preventDefault();
-        const enterAmount = amountInputRef.current.value;
-        const enterAmountNumber = +enterAmount; //convert
-        if (
-            enterAmount.trim().length === 0 ||
-            enterAmountNumber < 0 ||
-            enterAmountNumber > 5
-        )
-            return;
+        const userLogin= localStorage.getItem('loginUser');
+        if(!userLogin)
+        {
+            alert("Vui lòng đăng nhập!");
+        }
+        else{
+            const enterAmount = amountInputRef.current.value;
+            const enterAmountNumber = +enterAmount; //convert
+            if (
+                enterAmount.trim().length === 0 ||
+                enterAmountNumber < 0 ||
+                enterAmountNumber > 5
+            )
+                return;
+            
+            props.onAddToCart(enterAmountNumber);
+        }
         
-        props.onAddToCart(enterAmountNumber);
     }
 
     const ViewButton = () =>{

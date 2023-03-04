@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+    import { API } from "../../../constant";
 function Register(props) {
 
     const [fullName, setFullName] = useState('');
@@ -7,6 +7,7 @@ function Register(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rpPassword, setRpPassword] = useState('');
+
 
    
 
@@ -27,7 +28,7 @@ function Register(props) {
                 body: JSON.stringify(data)
             };
 
-            fetch('http://localhost:5000/user/register', requestOptions)
+            fetch(`${API}/user/register`, requestOptions)
                 .then(response => console.log(response))
                 .catch(error => console.log(error))
 

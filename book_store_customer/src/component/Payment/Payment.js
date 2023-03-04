@@ -2,9 +2,11 @@ import React, {useContext,useState } from "react";
 import Header from "../UI/Header/Header";
 import CartContext from "../../Store/CartContext";
 import {API} from "../../constant.js"
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Payment(props) {
     const cartCtx = useContext(CartContext);
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
@@ -69,9 +71,10 @@ function Payment(props) {
         console.log(requestOptions);    
         await fetch(`${API}/order/create`, requestOptions)
             .then(res => res.json)
-            .then(response => alert("Đặt hàng thành công"))
+            .then(response => {alert("Đặt hàng thành công") 
+                navigate('/', {replace: true})
+        })
             .catch(error => console.log(error))
-        // setListCategory([...listCategory, data])
     }
     return (
         <div className="payment">
@@ -273,7 +276,7 @@ function Payment(props) {
                                     Quay về giỏ hàng
                                 </p>
                             </a>
-                            <button type="submit"> <a href="https://book-shop-api-b7tb.onrender.com/">Xác nhận thanh toán</a></button>
+                            <button type="submit"> Xác nhận thanh toán</button>
                         </div>
                     </div>
                 </form>
