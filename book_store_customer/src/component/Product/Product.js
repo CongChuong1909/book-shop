@@ -12,11 +12,11 @@ function Product(props) {
     const [searchInput, setSearchInput] = useState('');
 
 
-    let active = 1;
+    let active;
     let items = [];
     for (let number = 1; number <= 3; number++) {
     items.push(
-        <Pagination.Item key={number} active={number === active} onClick={()=>setPagination(number)}>
+        <Pagination.Item className="pagination" key={number} active={number === active} onClick={()=>setPagination(number)}>
         {number}
         </Pagination.Item>,
     );

@@ -18,7 +18,7 @@ module.exports = function APIfeatures(query, queryString) {
 //     return this;
 //   };
   this.searching = () => {
-    const search = this.queryString.search;
+    const search = this.queryString.search.toLowercase();
     //new RegExp(search, 'i')  {$regex : search}
     if (search) {
       this.query = this.query.find({
