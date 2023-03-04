@@ -48,8 +48,11 @@ function Import(props) {
 
     return (
         <>
-            <Button onClick={handleView} onClose={handleClose}>
-                AddPurchase
+            <Button style={{
+                margin: "0px 60px",
+                
+            }} onClick={handleView} onClose={handleClose}>
+                Add Purchase
             </Button>
             {viewImport && <AddImport onAdd={addHandler} />}
             <Table className="table-hover table-striped">

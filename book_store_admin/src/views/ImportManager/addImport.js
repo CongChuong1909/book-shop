@@ -109,9 +109,12 @@ function AddImport(props) {
                                         >
                                             <div className="col-xl-12 col-lg-12 col-md-12">
                                                 <div className="form-group mb-3">
-                                                    <label>Book names</label>
+                                                    <label>Book name</label>
 
                                                     <input
+                                                        style={{
+                                                        margin: "5px",
+                                                    }}
                                                         list="data"
                                                         name="myInput"
                                                         id="myInput"
