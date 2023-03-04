@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate ,useLocation  } from "react-router-dom";
 import CartContext from "../../Store/CartContext";
+
 
 
 function CartButton(props) {
     const cartCtx = useContext(CartContext);
     const [isChangeCart, setIsChangeCart] = useState(false);
     const { items } = cartCtx;
+    const navigate = useNavigate();
+    const location = useLocation();
     
-    console.log(isChangeCart);
 
     useEffect(() => {
         if (items.length === 0) {
@@ -28,11 +30,24 @@ function CartButton(props) {
         
         return curNumber + item.amount;
     }, 0);
+
+    const handleCheckLogin = () =>{
+        console.log("Aaaaaaaaaa");
+        const userLogin = localStorage.getItem("loginUser");
+        if(!userLogin)
+        {
+            navigate(location.pathname);
+            alert("Vui lòng đăng nhập để tiếp tục")
+        }
+        else{
+            navigate('/cart');
+        }
+    }
     return (
         <div className="header_cart">
-            <Link to="/cart">
+            <div onClick={handleCheckLogin}>
                 <i className="fa-solid fa-cart-arrow-down"></i>
-            </Link>
+            </div>
             <p>{numberOfCartItems}</p>
         </div>
     );

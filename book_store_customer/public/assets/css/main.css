@@ -1695,3 +1695,7 @@ input[type=date]
 {
     width: 205px;
 }
+.close_detail-invoice{
+    padding: 2px 8px;
+    border: 1px solid #666;
+}

@@ -11,6 +11,7 @@ const Invoice = () => {
     const [listDetail, setListDetail] = useState([]);
     const [showDetail, setShowDetail] = useState(false);
     const [status, setStatus] = useState(-1);
+    let total = 0;
     const fetchlistInvoice = useCallback(async () => {
         try {
             const idUser = JSON.parse(localStorage.getItem('loginUser')).id;
@@ -20,22 +21,21 @@ const Invoice = () => {
                 throw new Error("Something is wrong!");
             }
             const data = await response.json();
-            const loadListInvoice = [];
-            for (const key in data) {
-                loadListInvoice.push({
-                    id: data[key]._id,
-                    user: data[key].idUser.name,
-                    voucher: data[key].idVoucher.name,
-                    total: data[key].total,
-                    recipient: data[key].recipient,
-                    phone: data[key].phone,
-                    address: data[key].address,
-                    note: data[key].note,
-                    date: data[key].date,
-                    status: data[key].status,
-                });
-                setStatus(data[key].status);
-            }
+                const loadListInvoice = [];
+                for (const key in data) {
+                    loadListInvoice.push({
+                        id: data[key]._id,
+                        user: data[key].idUser.name,
+                        total: data[key].total,
+                        recipient: data[key].recipient,
+                        phone: data[key].phone,
+                        address: data[key].address,
+                        note: data[key].note,
+                        date: data[key].date,
+                        status: data[key].status,
+                    });
+                    setStatus(data[key].status);
+                }
 
             setListInvoice(loadListInvoice);
         } catch (error) {}
@@ -117,13 +117,17 @@ const Invoice = () => {
             return <Button className="button_confirm" onClick={()=>handleConfirm(props.id)} variant="primary">Xác nhận đã nhận hàng</Button>
         }
     }
+
     return (
         <Container >
             <Header />
             <Row className="container_invoice">
-                <Col className="container_wrap" md={{ span: 8, offset: 2 }}>
+                <Col className="container_wrap" style={{display:"flex", flexDirection:"column-reverse"}} md={{ span: 8, offset: 2 }}>
+                    <div>
                     <h1 className="text-center mb-4">Invoice</h1>
-                    {listInvoice.map((item) => (
+                    {listInvoice.map((item) => {
+                        total = item.total;
+                        return(
                         <div className="container_wrap"  key={item.id}>
                             <Form  className="form_invoice">
                                <div className="container_wrap" >
@@ -204,7 +208,17 @@ const Invoice = () => {
                                     Hủy đơn hàng
                                 </Button>
                             </div>
-                            {showDetail && (
+                            
+                            <div className="text-center container_wrap-confirm mt-4">
+                            <HandleAccept id = {item.id}/>
+                            </div>
+                        </div>
+                    )})}
+                    </div>
+                    {showDetail && (
+                                <div style={{border: "1px solid #333", width: "100%"}}>
+                                    <div style={{padding:"20px"}}>
+                                    <div style={{width:"100%", display:"flex", justifyContent:"end"}}><div className="close_detail-invoice" onClick={() =>setShowDetail(false)}>x</div></div>
                                 <Table striped bordered hover>
                                     <thead>
                                         <tr>
@@ -215,36 +229,39 @@ const Invoice = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {listDetail.map((item) => (
-                                            <tr key={item.key}>
-                                                <td>{item.nameBook}</td>
-                                                <td>
-                                                    <img
-                                                        style={{
-                                                            width: "80px",
-                                                        }}
-                                                        src={item.imageBook}
-                                                        alt=""
-                                                    />
-                                                </td>
-                                                <td>{item.amount}</td>
-                                                <td>{item.price}</td>
-                                            </tr>
-                                        ))}
+                                        {listDetail.map((item) => 
+                                            {
+                                                console.log(item);
+                                                return (
+                                            
+                                                <tr key={item.key}>
+                                                    <td>{item.nameBook}</td>
+                                                    <td>
+                                                        <img
+                                                            style={{
+                                                                width: "80px",
+                                                            }}
+                                                            src={item.imageBook}
+                                                            alt=""
+                                                        />
+                                                    </td>
+                                                    <td>{item.amount}</td>
+                                                    <td>{item.price}</td>
+                                                </tr>
+                                            )}
+                                        )}
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td colSpan="3">Tổng Hóa đơn:</td>
-                                            <td>{item.total}</td>
+                                            <td>{total}</td>
                                         </tr>
                                     </tfoot>
                                 </Table>
+                                    </div>
+                                </div>
+                                
                             )}
-                            <div className="text-center container_wrap-confirm mt-4">
-                            <HandleAccept id = {item.id}/>
-                            </div>
-                        </div>
-                    ))}
                 </Col>
             </Row>
         </Container>

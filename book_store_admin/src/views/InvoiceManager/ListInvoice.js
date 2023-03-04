@@ -18,28 +18,51 @@ function InvoiceManagement() {
                 throw new Error("Something is wrong!");
             }
             const data = await response.json();
+            console.log(data);
             const loadListInvoice = [];
-            for (const key in data) {
-                loadListInvoice.push({
-                    id: data[key]._id,
-                    user: data[key].idUser.name,
-                    voucher: data[key].idVoucher.name,
-                    total: data[key].total,
-                    recipient: data[key].recipient,
-                    phone: data[key].phone,
-                    address: data[key].address,
-                    note: data[key].note,
-                    date: data[key].date,
-                    status: data[key].status,
-                });
+            if(data.voucher === null )
+            {
+                for (const key in data) {
+                    loadListInvoice.push({
+                        id: data[key]._id,
+                        user: data[key].idUser.name,
+                        voucher: data[key].idVoucher.name,
+                        total: data[key].total,
+                        recipient: data[key].recipient,
+                        phone: data[key].phone,
+                        address: data[key].address,
+                        note: data[key].note,
+                        date: data[key].date,
+                        status: data[key].status,
+                    });
+                }
+                setListInvoice(loadListInvoice);
             }
-            setListInvoice(loadListInvoice);
+            else{
+                for (const key in data) {
+                    loadListInvoice.push({
+                        id: data[key]._id,
+                        user: data[key].idUser.name,
+                        total: data[key].total,
+                        recipient: data[key].recipient,
+                        phone: data[key].phone,
+                        address: data[key].address,
+                        note: data[key].note,
+                        date: data[key].date,
+                        status: data[key].status,
+                    });
+                }
+                setListInvoice(loadListInvoice);
+
+            }
+            
+            
         } catch (error) {}
     };
     useEffect(() => {
         fetchlistInvoice();
     }, [status]);
-
+    console.log(listInvoice);
     const fetchlistInvoiceDetail = async (id) => {
         setViewDetail(true);
         try {
@@ -116,7 +139,9 @@ function InvoiceManagement() {
             return <p>Hoàn thành</p>;
         }
     };
-    console.log(status);
+    const handleCloseInvoiceDetail = () =>{
+        setViewDetail(false);
+    }
 
     return (
         <Card>
@@ -199,7 +224,7 @@ function InvoiceManagement() {
                                     <Button
                                         onClick={() =>
                                             fetchlistInvoiceDetail(item.id)
-                                        }
+                                            }
                                     >
                                         Detail
                                     </Button>
@@ -209,7 +234,7 @@ function InvoiceManagement() {
                     </tbody>
                 </Table>
 
-                {viewDetail && <DetailInvoice value={listInvoiceDetail} />}
+                {viewDetail && <DetailInvoice onClose = {handleCloseInvoiceDetail} value={listInvoiceDetail} />}
             </Card.Body>
         </Card>
     );

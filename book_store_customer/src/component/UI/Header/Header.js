@@ -36,6 +36,19 @@ function Header(props) {
         localStorage.removeItem("loginUser");
     }
 
+    const viewMyInvoice = () =>{
+        const loginUser = localStorage.getItem('loginUser');
+        if(!loginUser){
+            return <></>
+        }
+        else{
+            return  <li> <NavLink  to="/myinvoice" className={({ isActive }) =>
+                            isActive ? activeClassName : undefined
+                     } > Đơn hàng của tôi</NavLink>
+            </li>
+        }
+    }
+
     return (
             <div >
             <div className={classes["header"]}>
@@ -90,9 +103,7 @@ function Header(props) {
                     <li> <NavLink  to="/contact" className={({ isActive }) =>
                                         isActive ? activeClassName : undefined
                                     } > Liên hệ</NavLink></li>
-                    <li> <NavLink  to="/myinvoice" className={({ isActive }) =>
-                                        isActive ? activeClassName : undefined
-                                    } > Đơn hàng của tôi</NavLink></li>
+                   {viewMyInvoice()}
                    
                 </ul>
                 <CartButton/>

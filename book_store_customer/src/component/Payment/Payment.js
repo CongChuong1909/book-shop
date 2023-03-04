@@ -70,9 +70,19 @@ function Payment(props) {
 
         console.log(requestOptions);    
         await fetch(`${API}/order/create`, requestOptions)
-            .then(res => res.json)
-            .then(response => {alert("Đặt hàng thành công") 
-                navigate('/', {replace: true})
+            .then(res => { 
+                if(res.status === 200)
+                {
+                    cartCtx.items = [];
+                    cartCtx.totalAmount = 0;
+                    alert("Đặt hàng thành công") 
+                    navigate('/', {replace: true})
+                }
+                
+                return res.json})
+            .then(response => {
+                console.log(response);
+                
         })
             .catch(error => console.log(error))
     }
