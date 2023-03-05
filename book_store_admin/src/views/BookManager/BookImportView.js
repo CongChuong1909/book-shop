@@ -7,6 +7,7 @@ function BookImportView(props) {
     const [importItem, setImportItem] = useState([]);
     const fetchlistImport = async () => {
         const response = await fetch(`${API}/import`);
+        console.log(response);
         if (!response.ok) {
             throw new Error("Something is wrong!");
         }

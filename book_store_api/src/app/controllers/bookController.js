@@ -108,8 +108,9 @@ const BookController = {
   addAmount: async (req, res) => {
     try {
       await BookModel.findById(req.body.id).then((data) => {
-        data.qty += req.body.amount;
-        data.save();
+        // data.qty += req.body.amount;
+        // data.save();
+        console.log(data);
         return res.status(200).json({ msg: "Them sl thanh cong" });
       });
     } catch (error) {

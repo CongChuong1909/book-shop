@@ -818,3 +818,42 @@
 .visually-hidden{
     display: none;
 }
+
+.toast_price{
+    position: fixed;
+    top: 28%;
+    bottom: -50%;
+    left: 43%;
+    right: 31%;
+    width: 27%;
+    height: 28%;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    /* transform: translateX(100%); */
+    transition: all ease-in-out 0.25s;
+    animation: fadeIn ease-in-out 0.25s;
+    z-index: 9999;
+    border-radius: 20px;
+}
+
+.toast_price-message{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.toast_price-exit{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.toast_price-exit p{
+    padding:8px 20px;
+    cursor: pointer;
+    margin: 0;
+}

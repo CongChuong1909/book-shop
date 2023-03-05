@@ -36,22 +36,25 @@ function Admin() {
 
 
     const handleViewLoginForm = (rs) =>{
-        setViewLogin(true);
-        console.log(rs);
+        console.log("aaa");
+        setViewLogin(false);
         if(localStorage.getItem('admin'))
         {
             localStorage.removeItem('admin')
         }
-            localStorage.setItem('admin', JSON.stringify(rs));
+        localStorage.setItem('admin', JSON.stringify(rs));
         
     }
     const handleLogout = ()=>{
         setViewLogin(true);
+        if(localStorage.getItem('admin'))
+        {
+            localStorage.removeItem('admin')
+        }
     }
 
     const data = JSON.parse(localStorage.getItem('admin'));
-    console.log(data);
-
+    console.log(viewLogin);
   const location = useLocation();
   const mainPanel = React.useRef(null);
   const getRoutes = (routes) => {
@@ -84,8 +87,8 @@ function Admin() {
 //   }, [location]);
   return (
     <>
-        {/* {viewLogin && <Login  onLogin ={handleViewLoginForm}/>} */}
-      {viewLogin && 
+        {viewLogin && <Login  onLogin ={handleViewLoginForm}/>}
+      {!viewLogin && 
       <>
         <div className="wrapper">
         <Sidebar color={color} image={hasImage ? image : ""} routes={routes} />
