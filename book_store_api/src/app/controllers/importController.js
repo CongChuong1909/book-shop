@@ -70,7 +70,7 @@ const ImportController = {
           });
         }
       });
-      return res.status(200).json({ msg: "Nhập hàng hoàn tất" });
+      return res.status(200).json({ msg: "Nhập hàng hoàn tất." });
     } catch (error) {
       return res.status(500).json({ msg: "createImport " + error });
     }
