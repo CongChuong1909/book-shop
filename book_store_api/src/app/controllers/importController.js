@@ -56,10 +56,10 @@ const ImportController = {
             newItem.price = item.price;
             newItem.total = item.total;
 
-            bookModel.findById(item.idBook).then((data) => {
-              data.qty += item.amount;
-              data.save();
-            });
+//             bookModel.findById(item.idBook).then((data) => {
+//               data.qty += item.amount;
+//               data.save();
+//             });
             newItem.save((err, rs) => {
               if (err) {
                 return res
