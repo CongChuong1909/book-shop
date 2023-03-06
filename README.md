@@ -13,7 +13,7 @@
 
 ## Introduction
 
-A virtual ecommerce website using Node js, Express js, and Mongoose.
+A virtual ecommerce website using Node js, Express js, and Mongoose, .
 
 NOTE: Please read the RUN section before opening an issue.
 
@@ -62,18 +62,18 @@ The application is built with:
 The application displays a virtual Book store that contains virtual products and contact information.
 Users can do the following:
 
-Create an account, login or logout
-Browse available products added by the admin
-Pagination and search (name, category)
-Add products to the shopping cart
-Delete products from the shopping cart
-Hide product and alert when quatity equal to zero
-Add voucher to your invoice
-Display the shopping cart
-Display the invoice and status invoice
-To checkout, a user must be logged in
-Checkout information is send to the admin
-The profile contains all the orders a user has made
+- Create an account, login or logout
+- Browse available products added by the admin
+- Pagination and search (name, category)
+- Add products to the shopping cart
+- Delete products from the shopping cart
+- Hide product and alert when quatity equal to zero
+- Add voucher to your invoice
+- Display the shopping cart
+- Display the invoice and status invoice
+- To checkout, a user must be logged in
+- Checkout information is send to the admin
+- The profile contains all the orders a user has made
 
 Admins can do the following:
 
