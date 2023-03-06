@@ -13,7 +13,7 @@
 
 ## Introduction
 
-A virtual ecommerce website using Node js, Express js, and Mongoose, .
+A virtual ecommerce website using Node js, Express js, and Mongoose, ReactJS.
 
 NOTE: Please read the RUN section before opening an issue.
 
