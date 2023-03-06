@@ -29,6 +29,8 @@ function Login(props) {
     return (
         <div>
             <Container style={{ backgroundColor: "#000" }}>
+                <h5 style={{color:"white"}}>username: chuong</h5>
+                <h5 style={{color:"white"}} >password: 123</h5>
                 <Row className="vh-100 d-flex justify-content-center align-items-center">
                     <Col md={8} lg={6} xs={12}>
                         <div className="border border-3 border-primary"></div>
