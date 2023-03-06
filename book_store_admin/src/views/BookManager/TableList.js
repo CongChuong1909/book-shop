@@ -85,6 +85,7 @@ function TableList() {
     }, [pagination]);
 
     const addHandler = (data) => {
+        console.log(data);
         if (data.name == listBook.name) {
             alert("loai sach nay da co trong csdl!");
         } else {

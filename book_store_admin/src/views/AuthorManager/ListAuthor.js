@@ -147,6 +147,8 @@ function ListAuthor() {
                                                 <tr key={item.id}>
                                                     <td>
                                                         <img
+                                                            height={160}
+                                                            width= {160}
                                                             src={item.image}
                                                             alt=""
                                                         />

@@ -11,7 +11,7 @@ function AddBook(props) {
     const [publisher, setPublisher] = useState("");
     const [price, setPrice] = useState("");
 
-
+   
     const [listCate, setListCate] = useState(null);
     const [listAuthor, setListAuthor] = useState(null);
     const [listPublisher, setListPublisher] = useState(null);
@@ -99,7 +99,7 @@ function AddBook(props) {
             props.onAdd(data);
     }
 
-   
+    console.log(cate, author, publisher);
 
     return (
         <div>
