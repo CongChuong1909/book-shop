@@ -220,8 +220,12 @@
   text-transform: uppercase;
 }
 
+.fixed-plugin .adjustments-line{
+    display: flex;
+    justify-content: space-around;
+}
+
 .fixed-plugin .adjustments-line p {
-  float: left;
   display: inline-block;
   margin-bottom: 0;
   font-size: 1em;

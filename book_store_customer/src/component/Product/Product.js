@@ -3,6 +3,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import ProductItem from "./ProductItem"
 import Header from "../UI/Header/Header";
 import {API} from "../../constant.js"
+import ProductDetail from "./ProductDetail";
 
 function Product(props) {
 
@@ -10,6 +11,8 @@ function Product(props) {
     const [pagination, setPagination] = useState(1);
     const [filterCategory, setFilterCatgory] = useState('');
     const [searchInput, setSearchInput] = useState('');
+    const [dataDetailBook, setDataDetailBook] = useState(null);
+    const [viewDetailBook, setViewDetailBook] = useState(false);
 
 
     let active;
@@ -34,7 +37,7 @@ function Product(props) {
             }
             const data = await response.json();
             const loadList = [];
-            console.log(data);
+
             for (const key in data) {
                 loadList.push({
                     id: data[key]._id,
@@ -42,7 +45,8 @@ function Product(props) {
                     image: data[key].image,
                     price: data[key].price,
                     des: data[key].description,
-                    inventory: data[key].qty
+                    inventory: data[key].qty,
+                    slug: data[key].slug
                 });
             }
             
@@ -67,7 +71,6 @@ function Product(props) {
             }
             const data = await response.json();
             const loadListCate = [];
-            console.log(data);
             for (const key in data) {
                 loadListCate.push({
                     id: data[key]._id,
@@ -86,14 +89,49 @@ function Product(props) {
     }, [fetchlistCategoryBookHandler]); 
 
     const handleSearch = (data)=>{
-        console.log(data);
         setSearchInput(data);
     }
+    
 
-    console.log(listBook);
+    const fetchlistBookDetailHandler = useCallback(async (slug) => {
+        try {
+            const response = await fetch(
+                `${API}/book/${slug}`,
+            );
+            if (!response.ok) {
+                throw new Error("Something is wrong!");
+            }
+            
+            const data = await response.json();
+
+                const dataReturn = {
+                    id: data._id,
+                    name: data.name,
+                    image: data.image,
+                    price: data.price,
+                    description: data.description,
+                    qty:data.qty,
+                    nameAuthor: data.idAuthor.name,
+                    nameCate: data.idType.name,
+                    namePublisher: data.idPublisher.name,
+                }
+                    
+            setDataDetailBook(dataReturn);
+            setViewDetailBook(true);
+        } catch (error) {
+        }
+    }, []);
+
+
+    const handleViewDetailBook = (slug) =>{
+        fetchlistBookDetailHandler(slug)
+        
+    }
+
 
     return (
         <div>
+            <div>
             <Header onSearch = {handleSearch}/>
             <div className="content">
                 <div className="category">
@@ -107,18 +145,25 @@ function Product(props) {
                         ))}
                     </ul>
                 </div>
-                <div className="list_product-wrap">
-                    <ul className="list-product list-product2">
+                {!viewDetailBook &&  <div className="list_product-wrap">
+                    <ul  className="list-product list-product2">
                         
                         {listBook.map((item) => {
                             return(
-                                <ProductItem item = {item} />
+                                <ProductItem  onClickViewDetail = {()=>handleViewDetailBook(item.slug)} key = {item.id}  item = {item} />
                             )
                         })}
                     </ul>
                 </div>
+                }
+
+
+                {viewDetailBook && <ProductDetail  onClose = {() =>{setViewDetailBook(false)}} valueDetail = {dataDetailBook}/>}
             </div>
-            <div  style={{display:"flex", alignItems:"center", justifyContent:"center", marginLeft:"330px"}}><Pagination size = "lg">{items}</Pagination></div>
+            {!viewDetailBook && <div  style={{display:"flex", alignItems:"center", justifyContent:"center", marginLeft:"330px"}}><Pagination size = "lg">{items}</Pagination></div>
+            }
+        </div>
+            
         </div>
     );
 }

@@ -6,7 +6,6 @@ import ProductItemForm from "./ProductItemForm";
 function ProductItem(props) {
     const item = props.item;
     const [qty, setQty] = useState(item.inventory);
-    console.log(item);
     const cartCtx = useContext(CartContext);
     
     
@@ -49,7 +48,7 @@ function ProductItem(props) {
       }
 
     return (
-        <li className="product-items" key = {item.id}>
+        <li className="product-items" onClick={props.onClickViewDetail}  key = {item.id}>
             <div style={{padding:"16px 0px"}}>
                 <img src={item.image} alt="" />
                 <div className="product-items-wrap">
