@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import CartContext from '../../Store/CartContext';
+import ProductItemForm from './ProductItemForm';
 
 const ProductDetail = (props) => {
     const valueDetail = props.valueDetail;
-    console.log(valueDetail);
+    const [qty, setQty] = useState(valueDetail.qty);
+    const cartCtx = useContext(CartContext);
+    function handleAddToCart (amount){
+            setQty(qty - amount);
+            if(amount> qty)
+            {
+                alert("Không đủ sách trong kho")
+            }
+            else{
+                cartCtx.addItem({
+                    id: valueDetail.id,
+                    name : valueDetail.name,
+                    image: valueDetail.image,
+                    amount: amount,
+                    price: valueDetail.price,
+                    des: valueDetail.des,
+                    inventory: valueDetail.qty
+                })
+            }
+    }
   return (
     <div className="product-detail_wrap" >
         <div className='product-detail_exit' onClick={props.onClose}>x</div>
@@ -21,7 +42,8 @@ const ProductDetail = (props) => {
           <div className="product-quantity">
             <label htmlFor="quantity">Còn: {valueDetail.qty} Sách</label>
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+        
+            <ProductItemForm amount= {valueDetail.qty} onAddToCart = {handleAddToCart}/>
         </div>
       </div>
     </div>

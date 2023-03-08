@@ -7,6 +7,7 @@ function ProductItem(props) {
     const item = props.item;
     const [qty, setQty] = useState(item.inventory);
     const cartCtx = useContext(CartContext);
+    console.log(item);
     
     
     function handleAddToCart (amount){
@@ -48,15 +49,17 @@ function ProductItem(props) {
       }
 
     return (
-        <li className="product-items" onClick={props.onClickViewDetail}  key = {item.id}>
+        <li className="product-items" key = {item.id}>
             <div style={{padding:"16px 0px"}}>
-                <img src={item.image} alt="" />
-                <div className="product-items-wrap">
-                    <h2 className="product-title ellipsis">{item.name}</h2>
-                    <h4 className="price-sale">{convertToVnd(item.price)}</h4>
-                </div>
+                    <div style={{cursor:"pointer"}} onClick={props.onClickViewDetail}>
+                        <img src={item.image} alt="" />
+                        <div className="product-items-wrap" >
+                            <h2 className="product-title ellipsis">{item.name}</h2>
+                            <h4 className="price-sale">{convertToVnd(item.price)}</h4>
+                        </div>
+                    </div>
                     <div style={{display:"flex", justifyContent:"space-around"}}><ProductItemForm amount= {item.inventory} onAddToCart = {handleAddToCart}/></div>
-                <div className="overlay"></div>
+                
             </div>
         </li>
     );
