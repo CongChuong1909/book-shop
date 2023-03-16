@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const bookController = require("../app/controllers/bookController");
 
+
+router.get("/getAll", bookController.getAll);
 //2.
 router.get("/search", bookController.findByName);
 //3

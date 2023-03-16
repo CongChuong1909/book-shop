@@ -13,8 +13,10 @@ function Product(props) {
     const [searchInput, setSearchInput] = useState('');
     const [dataDetailBook, setDataDetailBook] = useState(null);
     const [viewDetailBook, setViewDetailBook] = useState(false);
+    const [list, setList] = useState(null);
 
-
+    const totalPage = Math.round(list.length / 8);
+    console.log(totalPage);
     let active;
     let items = [];
     for (let number = 1; number <= 3; number++) {
@@ -25,6 +27,34 @@ function Product(props) {
     );
     }
 
+
+    const fetchlist = useCallback(async () => {
+        try {
+            const response = await fetch(
+                `${API}/book`,
+            );
+            if (!response.ok) {
+                throw new Error("Something is wrong!");
+            }
+            const data = await response.json();
+            console.log(data);
+            const loadList = [];
+
+            for (const key in data) {
+                loadList.push({
+                    id: data[key]._id
+                });
+            }
+            
+            setList(loadList);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+    useEffect(() => {
+        fetchlist();
+        
+    }, [fetchlist]); 
 
 
     const fetchlistBookHandler = useCallback(async () => {
@@ -128,6 +158,11 @@ function Product(props) {
         
     }
 
+    if(list !== null)
+    {
+        console.log(list.length);
+    }
+    
 
     return (
         <div>
