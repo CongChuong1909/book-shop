@@ -74,7 +74,7 @@ function ListAuthor() {
         const objIndex = newListAuthor.findIndex((item) => item.id == id);
         newListAuthor[objIndex].name = data.name;
         newListAuthor[objIndex].image = data.image;
-        newListAuthor[objIndex].des = data.description;
+        newListAuthor[objIndex].description = data.description;
         setListAuthor([...newListAuthor]);
     };
 
@@ -148,7 +148,7 @@ function ListAuthor() {
                                                     <td>
                                                         <img
                                                             height={160}
-                                                            width= {160}
+                                                            width= {120}
                                                             src={item.image}
                                                             alt=""
                                                         />

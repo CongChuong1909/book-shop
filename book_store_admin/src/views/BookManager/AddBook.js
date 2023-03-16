@@ -79,6 +79,7 @@ function AddBook(props) {
         })
             .then((res) => res.json())
             .then((res) => {
+                console.log(res.url);
                 setImageBook(res.url);
             })
             .catch((error) => console.log(error));
@@ -88,13 +89,13 @@ function AddBook(props) {
     const submitHandler = async(e) =>{
         e.preventDefault();
         const data = {
-            name: nameBook,
-            image: imageBook,
-            price: price,
-            description: desBook,
-            idAuthor: author,
-            idType: cate,
-            idPublisher: publisher,
+            name: nameBook === "" ? alert('vui lòng nhập tên sách') : nameBook,
+            image: imageBook === "" ? alert('vui lòng nhập hình ảnh') : imageBook,
+            price: price === "" ? alert('vui lòng nhập giá sách') : price,
+            description: desBook === "" ? alert('vui lòng nhập mô tả') : desBook,
+            idAuthor: author === "" ? alert('vui lòng nhập tác giả') : author,
+            idType: cate === "" ? alert('vui lòng nhập danh mục sách') : cate,
+            idPublisher: publisher === "" ? alert('vui lòng nhập nhà xuất bản') : publisher,
         }; 
             props.onAdd(data);
     }

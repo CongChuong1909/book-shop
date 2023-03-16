@@ -207,6 +207,8 @@ function UpdateBook(props) {
                                                 <div className="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                                                     <div className="custom-file mt-3 mb-3">
                                                         <img
+                                                            width={120}
+                                                            height={160}
                                                             src={imageBook}
                                                             alt=""
                                                         />

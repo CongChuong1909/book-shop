@@ -63,6 +63,7 @@ function TableList() {
             throw new Error("Something is wrong!");
         }
         const data = await response.json();
+        
         const loadListBook = [];
         for (const key in data) {
             loadListBook.push({
