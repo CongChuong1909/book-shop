@@ -97,11 +97,18 @@ function AddBook(props) {
             idType: cate === "" ? alert('vui lòng chọn danh mục sách') : cate,
             idPublisher: publisher === "" ? alert('vui lòng nhập nhà xuất bản') : publisher,
         }; 
+        if(!data.image || !data.imageBook || !data.price || !data.description || !data.idAuthor || !data.idType || !data.idPublisher)
+        {
+            return;
+        }
+        else{
             props.onAdd(data);
+        }
+            
     }
 
     console.log(cate, author, publisher);
-
+  
     return (
         <div>
             <form className="formAddMeals" onSubmit={submitHandler}>
@@ -201,13 +208,14 @@ function AddBook(props) {
                                                     }
                                                     className="custom-select tm-select-accounts"
                                                 > <option selected="selected"></option>
-                                                    {listCate &&
+                                                    {
+                                                    listCate &&
                                                         listCate.map((item) => (
                                                            
                                                             <option
                                                                 key={item._id}
-                                                                selected
-                                                                value={item._id}
+                                                                value={item._id} 
+                                                                selected = ""
                                                             >
                                                                 {item.name}
                                                             </option>
@@ -233,7 +241,7 @@ function AddBook(props) {
                                                                     key={
                                                                         item._id
                                                                     }
-                                                                    selected
+                                                                    selected = ""
                                                                     value={
                                                                         item._id
                                                                     }
@@ -263,7 +271,7 @@ function AddBook(props) {
                                                                     key={
                                                                         item._id
                                                                     }
-                                                                    selected
+                                                                    selected = ""
                                                                     value={
                                                                         item._id
                                                                     }
