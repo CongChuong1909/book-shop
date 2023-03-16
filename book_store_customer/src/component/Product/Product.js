@@ -15,17 +15,50 @@ function Product(props) {
     const [viewDetailBook, setViewDetailBook] = useState(false);
     const [list, setList] = useState(null);
 
-    const totalPage = Math.round(list.length / 8);
-    console.log(totalPage);
+    let totalPage =2;
+    console.log(list);
+    if(list !== null)
+    {
+        totalPage = Math.ceil(list.length / 8);
+    }
+   
     let active;
     let items = [];
-    for (let number = 1; number <= 3; number++) {
+    for (let number = 1; number <= totalPage; number++) {
     items.push(
         <Pagination.Item className="pagination" key={number} active={number === active} onClick={()=>setPagination(number)}>
         {number}
         </Pagination.Item>,
     );
     }
+
+    const fetchlistAll = useCallback(async () => {
+        try {
+            const response = await fetch(
+                `${API}/book/getAll`,
+            );
+            if (!response.ok) {
+                throw new Error("Something is wrong!");
+            }
+            const data = await response.json();
+            console.log(data);
+            const loadList = [];
+
+            for (const key in data) {
+                loadList.push({
+                    id: data[key]._id
+                });
+            }
+            
+            setList(loadList);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+    useEffect(() => {
+        fetchlistAll();
+        
+    }, [fetchlistAll]); 
 
 
     const fetchlist = useCallback(async () => {
@@ -158,11 +191,8 @@ function Product(props) {
         
     }
 
-    if(list !== null)
-    {
-        console.log(list.length);
-    }
-    
+
+    console.log(listBook);
 
     return (
         <div>

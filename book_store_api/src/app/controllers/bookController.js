@@ -43,9 +43,10 @@ const BookController = {
         .typing()
         .authoring()
         .searching();
+
       const books = await features.query.then((data) => data);
 
-      return res.status(200).json(books, features.paginating);
+      return res.status(200).json(books);
     } catch (err) {
       return res.status(500).json({ msg: "getAllBook: " + err.message });
     }
