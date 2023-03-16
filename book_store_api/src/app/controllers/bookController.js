@@ -36,7 +36,7 @@ const BookController = {
         }).then((data) => data._id);
       }
       const features = new APIfeatures(
-        BookModel.find().populate("idTypeww idAuthor idPublisher"),
+        BookModel.find().populate("idType idAuthor idPublisher"),
         req.query
       )
         .paginating()
